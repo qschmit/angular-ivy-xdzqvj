@@ -1,0 +1,21 @@
+<p>container works!</p>
+
+Search:
+{{ search$ | async | json }}
+
+<div>
+  <button
+    (click)="search$.next(t)"
+    *ngFor="let t of terrains$ | async"
+    type="button"
+  >
+    {{ t }}
+  </button>
+</div>
+
+<h1>Filtered planets {{ (filteredPlanets$ | async)?.length }}</h1>
+{{ filteredPlanets$ | async | json }}
+
+<div *ngFor="let planet of planets$ | async">
+  <app-planet-display [planet]="planet"></app-planet-display>
+</div>
